@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <v-layout wrap>
-      <v-flex class="d-flex justify-center align-center">
-        <v-card width="700">
+      <v-flex xs12 class="d-flex justify-center">
+        <v-card width="650" height="100px" class="d-flex mt-6">
           <v-text-field
             outlined
             class="pa-3 field"
@@ -10,34 +10,26 @@
             v-model="artist"
           />
           <v-btn
-            class="ma-3 d-flex align-right justify-right"
-            @click="Search"
+            icon
+            class="mt-6 mr-3 d-flex align-right justify-right"
+            @click="HandleOnClick"
             :loading="loader"
             ><v-icon>mdi-magnify</v-icon></v-btn
           >
         </v-card>
       </v-flex>
-      <v-flex wrap v-if="loader" xs12 class="d-flex align-center flex-column">
-        <v-img src="" />
-      </v-flex>
-      <v-flex
-        v-else
-        lg2
-        md3
-        sm4
-        xs6
-        class="white"
-        v-for="(item, index) in results"
-        :key="index"
-      >
+      <v-flex lg3 class="pa-4" v-for="(item, index) in results" :key="index">
         <CardInfo :info="item" />
       </v-flex>
+
       <v-flex
         v-if="results.length == 0 && loader == false"
         xs12
         class="d-flex align-center flex-column"
       >
-        <v-img src="" />
+        <v-img
+          src="https://assets10.lottiefiles.com/packages/lf20_n2m0isqh.json"
+        />
       </v-flex>
     </v-layout>
   </v-app>
@@ -59,10 +51,6 @@ export default {
     };
   },
   methods: {
-    Search() {
-      this.results = [];
-      this.searchAPI();
-    },
     searchAPI() {
       if (this.artist != "") {
         this.loader = true;
@@ -80,6 +68,10 @@ export default {
             console.log(this.results);
           });
       }
+    },
+    HandleOnClick() {
+      this.results = [];
+      this.searchAPI();
     },
   },
   mounted() {

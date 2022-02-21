@@ -12,15 +12,23 @@
           <v-btn
             icon
             class="mt-6 mr-3 d-flex align-right justify-right"
-            @keyup.enter="submit"
             @click="HandleOnClick"
             :loading="loader"
             ><v-icon>mdi-magnify</v-icon></v-btn
+          >
+          <v-btn
+            icon
+            class="mt-6 mr-3 d-flex align-right justify-right"
+            @click="ClearSearch"
+            ><v-icon>mdi-autorenew</v-icon></v-btn
           >
         </v-card>
       </v-flex>
       <v-flex lg3 class="pa-4" v-for="(item, index) in results" :key="index">
         <CardInfo :info="item" />
+      </v-flex>
+      <v-flex v-if="loader" xs12 class="d-flex align-center flex-column">
+        <v-img class="img" src="@/assets/animation.gif" />
       </v-flex>
       <v-flex
         v-if="results.length == 0 && loader == false"
@@ -71,11 +79,16 @@ export default {
       this.results = [];
       this.searchAPI();
     },
+
     mounted() {
       this.searchAPI();
     },
     reset() {
-      this.artist;
+      this.results;
+    },
+    ClearSearch() {
+      this.artist = "";
+      this.results = [];
     },
   },
 };

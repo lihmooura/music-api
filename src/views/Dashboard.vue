@@ -88,9 +88,9 @@ export default {
 }
 .img {
   margin-top: -30px;
-  width: 800px;
+  width: 600px;
   height: 500px;
   border-radius: 50%;
-  background-color: rgba(81, 114, 153, 0.4668461134453782);
+  opacity: 35%;
 }
 </style>

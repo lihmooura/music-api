@@ -3,7 +3,12 @@
     <v-layout wrap>
       <v-flex class="d-flex justify-center align-center">
         <v-card width="700">
-          <v-text-field outlined class="pa-3" label="Search" />
+          <v-text-field
+            outlined
+            class="pa-3 field"
+            label="Search"
+            v-model="artist"
+          />
           <v-btn
             class="ma-3 d-flex align-right justify-right"
             @click="Search"
@@ -25,8 +30,8 @@
         v-for="(item, index) in results"
         :key="index"
       >
+        <CardInfo :info="item" />
       </v-flex>
-
       <v-flex
         v-if="results.length == 0 && loader == false"
         xs12
@@ -40,8 +45,12 @@
 
 <script>
 import axios from "axios";
+import CardInfo from "../components/CardInfo.vue";
 export default {
   name: "Dashboard",
+  components: {
+    CardInfo,
+  },
   data() {
     return {
       artist: "",

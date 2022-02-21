@@ -36,7 +36,6 @@ export default {
 .card-info {
   border-radius: 10px;
   border-color: black;
-  background: grey lighten-5;
   cursor: pointer;
 }
 .card-info:hover {

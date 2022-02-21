@@ -2,16 +2,17 @@
   <v-app>
     <v-layout wrap>
       <v-flex xs12 class="d-flex justify-center">
-        <v-card width="650" height="100px" class="d-flex mt-6">
+        <v-card width="500" height="100px" class="d-flex mt-8">
           <v-text-field
             outlined
             class="pa-3 field"
-            label="Search"
+            label="Search Artist"
             v-model="artist"
           />
           <v-btn
             icon
             class="mt-6 mr-3 d-flex align-right justify-right"
+            @keyup.enter="submit"
             @click="HandleOnClick"
             :loading="loader"
             ><v-icon>mdi-magnify</v-icon></v-btn
@@ -21,15 +22,12 @@
       <v-flex lg3 class="pa-4" v-for="(item, index) in results" :key="index">
         <CardInfo :info="item" />
       </v-flex>
-
       <v-flex
         v-if="results.length == 0 && loader == false"
         xs12
-        class="d-flex align-center flex-column"
+        class="box d-flex align-center justify-center flex-column"
       >
-        <v-img
-          src="https://assets10.lottiefiles.com/packages/lf20_n2m0isqh.json"
-        />
+        <v-img class="img" src="@/assets/animation.gif" />
       </v-flex>
     </v-layout>
   </v-app>
@@ -73,9 +71,26 @@ export default {
       this.results = [];
       this.searchAPI();
     },
-  },
-  mounted() {
-    this.searchAPI();
+    mounted() {
+      this.searchAPI();
+    },
+    reset() {
+      this.artist;
+    },
   },
 };
 </script>
+
+<style>
+.box {
+  width: 400px;
+  height: 400px;
+}
+.img {
+  margin-top: -30px;
+  width: 800px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: rgba(81, 114, 153, 0.4668461134453782);
+}
+</style>

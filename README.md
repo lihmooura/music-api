@@ -1,24 +1,14 @@
-# music-api
+## Music Clone - API
 
-## Project setup
-```
-npm install
-```
+## What was used to build:
+- [x] VueJS
+- [x] Vuetify
+- [x] Axios
+##
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- Music Clone - API
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/88293904/156947940-dd8511e9-6b1a-4fed-ad16-ffd91dbfe04d.gif)
+##
+## What is possible to do:
+- [x] Search artist
